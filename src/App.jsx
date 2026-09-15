@@ -52,6 +52,8 @@ export default function App() {
 
   function toggleCategory(id) {
     setActiveCategories((prev) => {
+      // Nothing is filtered yet, so treat the first click as "show me only this".
+      if (prev.size === ALL_CATEGORY_IDS.size) return new Set([id]);
       const next = new Set(prev);
       if (next.has(id)) next.delete(id);
       else next.add(id);
